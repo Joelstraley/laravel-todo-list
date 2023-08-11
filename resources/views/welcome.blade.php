@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="/resources/css/app.css" rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -21,8 +22,18 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-           <h1>to do list</h1>
+        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0 flex-col">
+           <h1>To Do List</h1>
+            @foreach ($listItems as $listItem)
+            <div class="flex flex-col" style="align-items: center;">
+            <form method="post" action="{{ route('markComplete', $listItem->id) }}" accept-charset="UTF-8">
+            {{ csrf_field() }}
+                <p>Item: {{ $listItem->name}}</p>
+                <button type="submit" style="max-height: 25px; margin-left: 20px">Mark Complete</button>
+            </form>
+            </div>
+            @endforeach
+
             <form method="post" action="{{ route('saveItem') }}" accept-charset="UTF-8">
             {{ csrf_field() }}
                 <label for="listItem">Enter Todo</label></br>
