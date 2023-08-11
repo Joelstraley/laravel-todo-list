@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Todo List</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -23,9 +23,12 @@
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
            <h1>to do list</h1>
-           <label for="listItem">Enter Todo</label></br>
-           <input type="text" name="listItem"></br>
-           <button type="submit">Save Item</button>
+            <form method="post" action="{{ route('saveItem') }}" accept-charset="UTF-8">
+            {{ csrf_field() }}
+                <label for="listItem">Enter Todo</label></br>
+                <input type="text" name="listItem"></br>
+                <button type="submit">Save Item</button>
+            </form>
         </div>
     </body>
 </html>

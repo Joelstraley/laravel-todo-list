@@ -17,6 +17,7 @@ class CreateListItemsTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('is_complete');
+            $table->string('test');
             $table->timestamps();
         });
     }
